@@ -5,10 +5,9 @@ export const Container = styled.div`
 
     margin: 4rem auto;
 
-    table{ 
+    table { 
         width: 100%;
         border-spacing: 0 0.5rem;
-
         
         th { 
             color: var(--text-body);
@@ -38,5 +37,6 @@ export const Container = styled.div`
                 color: var(--green);
             }
         }
+
     }
 `
