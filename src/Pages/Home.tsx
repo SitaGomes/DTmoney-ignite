@@ -5,11 +5,11 @@ import { GlobalStyles } from 'Styles/globalStyles';
 
 import { Dashboard } from 'Components/Dashboard';
 import { Header } from 'Components/Header';
+import { NewTransactionModal } from 'Components/NewTransactionModal';
 
 export const Home: React.FC = () => {
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState<boolean>(false)
-
   Modal.setAppElement('#root')
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState<boolean>(false)
 
   function handleOpenTransactionModal () {
     setIsNewTransactionModalOpen(true)
@@ -19,20 +19,22 @@ export const Home: React.FC = () => {
     setIsNewTransactionModalOpen(false)
   }
 
-
   return(
     <>
       <Header onOpenNewTransaction={handleOpenTransactionModal}/>
       <Dashboard />
 
-      <Modal
-        isOpen={isNewTransactionModalOpen}
-        onRequestClose={handleCloseTransactionModal}
-      >
-        <h1>Cadastrar transação</h1>
-      </Modal>
 
-      <GlobalStyles />
+      {/* Extra Components */}
+      <>
+        <NewTransactionModal
+          isModalOPen={isNewTransactionModalOpen}
+          onRequestCloseModal={handleCloseTransactionModal}
+        />
+        <GlobalStyles />
+      </>
+
+
     </>
   )
 }

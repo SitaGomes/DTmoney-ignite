@@ -8,3 +8,8 @@ export interface TransactionsData {
 export interface HeaderProps {
     onOpenNewTransaction: () => void;
 }
+
+export interface NewTransactionModalProps {
+    isModalOPen: boolean;
+    onRequestCloseModal: () => void;
+}
