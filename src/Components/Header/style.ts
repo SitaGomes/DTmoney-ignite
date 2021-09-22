@@ -7,13 +7,14 @@ export const Container = styled.header`
 
 export const Content = styled.div`
     max-width: 1120px;
+    
+    margin: 0 auto;
+    padding: 2rem 1rem 12rem;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    margin: 0 auto;
-    padding: 2rem 1rem 12rem;
 
     button { 
         background: var(--blue-light);
@@ -26,6 +27,7 @@ export const Content = styled.div`
         border-radius: 0.25rem;
 
         transition: filter 0.2s;
+        
         &:hover{
             filter: brightness(0.9)
         }
