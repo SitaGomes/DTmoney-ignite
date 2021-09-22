@@ -3,9 +3,12 @@ import Modal from 'react-modal'
 
 import { NewTransactionModalProps } from 'Interfaces'
 
-import { Container } from 'Components/NewTransactionModal/style'
+import { Container, TransactionCategoryContainer } from 'Components/NewTransactionModal/style'
 
 import CloseModal from 'Assets/SVG/close.svg'
+import Income from 'Assets/SVG/income.svg'
+import Outcome from 'Assets/SVG/outcome.svg'
+
 
 export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModalOPen, onRequestCloseModal}) => {
     
@@ -33,6 +36,20 @@ export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModal
 
                 <input type="text" placeholder="Titulo"/>
                 <input type="number" placeholder="Preço"/>
+
+                <TransactionCategoryContainer>
+                    <button>
+                        <img src={Income} alt="Entrada" />
+                        <span>Entradas</span>
+                    </button>
+
+                    <button>
+                        <img src={Outcome} alt="Saída" />
+                        <span>Saídas</span>
+                    </button>
+                    
+                </TransactionCategoryContainer>
+
                 <input type="text" placeholder="Categoria"/>
 
                 <button type="submit">
