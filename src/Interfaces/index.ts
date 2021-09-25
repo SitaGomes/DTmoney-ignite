@@ -1,8 +1,9 @@
-export interface TransactionsData {
+export interface Transaction {
     title: string;
     price: number;
-    data: string;
+    createdAt: string;
     category: string;
+    type: string
 }
 
 export interface HeaderProps {
