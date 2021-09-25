@@ -34,10 +34,19 @@ export const TransactionsTable: React.FC = () => {
                         <tr key={index}>
                             <td>{transaction.title}</td>
                             <td className={transaction.type}>
-                                {transaction.type === 'deposit' ? `R$ ${transaction.price},00` : `- R$ ${transaction.price},00`}
+                                {
+                                    new Intl.NumberFormat('pt-Br', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    }).format(transaction.price)}
                             </td>
                             <td>{transaction.category}</td>
-                            <td>{transaction.createdAt}</td>
+                            <td>
+                                {
+                                    new Intl.DateTimeFormat('pt-BR')
+                                        .format(new Date(transaction.createdAt))
+                                }
+                            </td>
                         </tr>
                     
                     ))}

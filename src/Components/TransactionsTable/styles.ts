@@ -31,6 +31,19 @@ export const Container = styled.div`
 
             &.withdraw {
                 color: var(--red);
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    bottom: 50%;
+                    transform: translate(-50%, -50%);
+                    left: 0;
+                    
+                    width: 0.5rem;
+                    border: 1px solid var(--red);
+                }
             }
 
             &.deposit {
