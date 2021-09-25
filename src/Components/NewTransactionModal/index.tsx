@@ -1,9 +1,9 @@
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
 
 import { NewTransactionModalProps } from 'Interfaces'
 
-import { Container, TransactionCategoryContainer } from 'Components/NewTransactionModal/style'
+import { Container, TransactionCategoryContainer, RadioBox } from 'Components/NewTransactionModal/style'
 
 import CloseModal from 'Assets/SVG/close.svg'
 import Income from 'Assets/SVG/income.svg'
@@ -12,6 +12,9 @@ import Outcome from 'Assets/SVG/outcome.svg'
 
 export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModalOPen, onRequestCloseModal}) => {
     
+    const [category, setCategory] = useState('deposit' as string)
+
+
     function handleNewTransaction(e: FormEvent) {
         e.preventDefault()
     }
@@ -38,15 +41,23 @@ export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModal
                 <input type="number" placeholder="Preço"/>
 
                 <TransactionCategoryContainer>
-                    <button>
+                    <RadioBox
+                        onClick={() => {setCategory('deposit')}}
+                        isSelected={category === 'deposit'}
+                        selectedColor='green'
+                    >
                         <img src={Income} alt="Entrada" />
                         <span>Entradas</span>
-                    </button>
+                    </RadioBox>
 
-                    <button>
+                    <RadioBox
+                        onClick={() => {setCategory('withdraw')}}
+                        isSelected={category === 'withdraw'}
+                        selectedColor='red'
+                    >
                         <img src={Outcome} alt="Saída" />
                         <span>Saídas</span>
-                    </button>
+                    </RadioBox>
                     
                 </TransactionCategoryContainer>
 
