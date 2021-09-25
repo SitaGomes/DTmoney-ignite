@@ -72,7 +72,7 @@ const colors = {
     red: '#E52E4D'
 }
 
-export const RadioBox = styled.button<RadioButtonProps>`
+export const RadioBox = styled.div<RadioButtonProps>`
     background: ${props => props.isSelected 
         ? `${transparentize('0.9', colors[props.selectedColor])}` 
         : 'transparent'
