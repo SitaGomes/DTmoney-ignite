@@ -6,7 +6,7 @@ import {Transaction} from 'Interfaces'
 
 export const TransactionsTable: React.FC = () => {
 
-    const transactionsData = useContext(TransactionContext)
+    const {transactionsData} = useContext(TransactionContext)
 
     return (
         <Container>

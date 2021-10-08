@@ -1,3 +1,8 @@
+export interface TransactionContextData {
+    transactionsData: Transaction[],
+    createNewTransaction: (newTransaction: NewTransaction) => void,
+}
+
 export interface Transaction {
     title: string;
     price: number;
@@ -5,6 +10,8 @@ export interface Transaction {
     category: string;
     type: string
 }
+
+export type NewTransaction = Omit<Transaction, 'id' | 'createdAt'>
 
 export interface HeaderProps {
     onOpenNewTransaction: () => void;

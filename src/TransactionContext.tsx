@@ -1,8 +1,8 @@
 import {createContext, useEffect, useState} from 'react'
-import {Transaction} from 'Interfaces'
+import {NewTransaction, Transaction, TransactionContextData} from 'Interfaces'
 import { api } from 'Services/api'
 
-export const TransactionContext = createContext<Transaction[]>([])
+export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData)
 
 export const TransactionProvider: React.FC = ({children}) => {
 
@@ -15,8 +15,13 @@ export const TransactionProvider: React.FC = ({children}) => {
     
     }, [])
 
+    function createNewTransaction(newTransaction: NewTransaction) {
+
+        api.post('/transactions', newTransaction)
+    }
+
     return(
-        <TransactionContext.Provider value={transactionsData}>
+        <TransactionContext.Provider value={{transactionsData, createNewTransaction}}>
             {children}
         </TransactionContext.Provider>
     )
