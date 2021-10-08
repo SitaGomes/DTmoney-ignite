@@ -7,6 +7,8 @@ import { Dashboard } from 'Components/Dashboard';
 import { Header } from 'Components/Header';
 import { NewTransactionModal } from 'Components/NewTransactionModal';
 
+import {TransactionProvider} from 'TransactionContext'
+
 export const Home: React.FC = () => {
   Modal.setAppElement('#root')
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState<boolean>(false)
@@ -20,7 +22,7 @@ export const Home: React.FC = () => {
   }
 
   return(
-    <>
+    <TransactionProvider>
       <Header onOpenNewTransaction={handleOpenTransactionModal}/>
       <Dashboard />
 
@@ -35,7 +37,7 @@ export const Home: React.FC = () => {
       </>
 
 
-    </>
+    </TransactionProvider>
   )
 }
 
