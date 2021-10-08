@@ -1,6 +1,6 @@
 export interface TransactionContextData {
     transactionsData: Transaction[],
-    createNewTransaction: (newTransaction: NewTransaction) => void,
+    createNewTransaction: (newTransaction: NewTransaction) => Promise<void>,
 }
 
 export interface Transaction {

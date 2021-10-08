@@ -1,6 +1,5 @@
-import { FormEvent, useState, useContext } from 'react'
+import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
-import {TransactionContext} from 'TransactionContext'
 
 import { NewTransactionModalProps } from 'Interfaces'
 
@@ -9,25 +8,26 @@ import { Container, TransactionCategoryContainer, RadioBox } from 'Components/Ne
 import CloseModal from 'Assets/SVG/close.svg'
 import Income from 'Assets/SVG/income.svg'
 import Outcome from 'Assets/SVG/outcome.svg'
+import { useTransactionContext } from 'Hooks/useTransactionContext'
 
 
 export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModalOPen, onRequestCloseModal}) => {
     
-    const { createNewTransaction } = useContext(TransactionContext)
+    const { createNewTransaction } = useTransactionContext()
     
     const [title, setTitle] = useState('' as string)
     const [price, setPrice] = useState(0 as number)
     const [category, setCategory] = useState('' as string)
     const [type, setType] = useState('deposit' as string)
 
-    function handleNewTransaction(e: FormEvent) {
+    async function handleNewTransaction(e: FormEvent) {
         e.preventDefault()
 
         if (title.trim() === '' || category.trim() === '') {
             return alert('Por favor prencha todos os dados')
         }
 
-        createNewTransaction({
+        await createNewTransaction({
             category,
             price, 
             title,
@@ -37,7 +37,9 @@ export const NewTransactionModal: React.FC<NewTransactionModalProps> = ({isModal
         setTitle('')
         setPrice(0)
         setCategory('')
-        setType('')
+        setType('deposit')
+
+        onRequestCloseModal()
     }
     
     return(

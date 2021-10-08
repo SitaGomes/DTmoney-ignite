@@ -15,9 +15,12 @@ export const TransactionProvider: React.FC = ({children}) => {
     
     }, [])
 
-    function createNewTransaction(newTransaction: NewTransaction) {
-
-        api.post('/transactions', newTransaction)
+    async function createNewTransaction(newTransaction: NewTransaction) {
+        const response = await api.post('/transactions', {...newTransaction, createdAt: new Date()})
+        
+        const {transaction} = response.data
+    
+        setTransactionsData([...transactionsData, transaction])
     }
 
     return(
