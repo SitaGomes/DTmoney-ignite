@@ -15,7 +15,7 @@ createServer({
     server.db.loadData({
       transactions: [
         { 
-          id: Math.random(),
+          id: 1,
           title: 'MacBook M1',
           price: 8000,
           type: 'withdraw',
@@ -23,7 +23,7 @@ createServer({
           createdAt: new Date('01-09-2021')
         },
         { 
-          id: Math.random(),
+          id: 2,
           title: 'Freelance de website',
           price: 1000,
           category: 'Dev',
@@ -38,7 +38,7 @@ createServer({
     this.namespace = '/api'
 
     this.get('/transactions', () => {
-      return this.schema.all('transaction') 
+      return this.schema.all('transaction')
     })
 
     this.post('/transactions', (schema, request) => {

@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Container } from 'Components/TransactionsTable/styles'
 
 import {Transaction} from 'Interfaces'
-import { api } from 'Services/api'
+import { useTransactionContext } from 'Hooks/useTransactionContext'
 
 export const TransactionsTable: React.FC = () => {
 
-    const [transactionsData, setTransactionsData] = useState<Transaction[]>([])
-
-    useEffect(() => {
-        
-        api.get('transactions')
-            .then((res) => setTransactionsData(res.data.transactions))
-    
-    }, [])
-
+    const {transactionsData} = useTransactionContext()
 
     return (
         <Container>
@@ -38,7 +30,8 @@ export const TransactionsTable: React.FC = () => {
                                     new Intl.NumberFormat('pt-Br', {
                                         style: 'currency',
                                         currency: 'BRL'
-                                    }).format(transaction.price)}
+                                    }).format(transaction.price)
+                                }
                             </td>
                             <td>{transaction.category}</td>
                             <td>
